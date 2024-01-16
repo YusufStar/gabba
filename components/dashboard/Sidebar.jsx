@@ -12,50 +12,53 @@ import {useMediaQuery} from "@/lib/table/useMediaQuery";
 
 const buttons = [
     {
-        id: "1",
-        label: "Dashboard",
-        icon: UserIcon,
-        path: "",
-        childs: [
+        title: "Stock",
+        buttons : [
             {
                 id: "1.1",
-                label: "Add Company",
-                path: "/dashboard/addcompany",
-                icon: UserIcon,
-            },
-            {
-                id: "1.2",
-                label: "Add Person",
-                path: "/dashboard/Addperson",
-                icon: UserIcon,
-            },
-            {
-                id: "1.3",
-                label: "Add Suplier",
-                path: "/dashboard/addsuplier",
-                icon: UserIcon,
-            },
-            {
-                id: "1.4",
                 label: "Stock",
+                path: "/dashboard/Stock",
                 icon: UserIcon,
+            },
+            {
+                id: "1.1",
+                label: "Stock Control",
+                path: "/dashboard/Stockcontrol",
+                icon: UserIcon,
+            }
+        ]
+    },
+    {
+        title: "Others",
+        buttons: [
+            {
+                id: "1",
+                label: "Dashboard",
+                icon: UserIcon,
+                path: "",
                 childs: [
                     {
-                        id: "1.4.1",
-                        label: "Stock",
-                        path: "/dashboard/Stock",
+                        id: "1.1",
+                        label: "Add Company",
+                        path: "/dashboard/addcompany",
                         icon: UserIcon,
                     },
                     {
-                        id: "1.4.2",
-                        label: "Stock Control",
-                        path: "/dashboard/Stockcontrol",
+                        id: "1.2",
+                        label: "Add Person",
+                        path: "/dashboard/Addperson",
                         icon: UserIcon,
-                    }
-                ]
-            }
-        ],
-    },
+                    },
+                    {
+                        id: "1.3",
+                        label: "Add Suplier",
+                        path: "/dashboard/addsuplier",
+                        icon: UserIcon,
+                    },
+                ],
+            },
+        ]
+    }
 ]
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -167,10 +170,17 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                   </div>
                   <div className={
                       classNames(
-                          !isCollapsed ? "mt-4 flex flex-col gap-2" : "hidden"
+                          !isCollapsed ? "mt-4 flex flex-col gap-2 px-4" : "hidden"
                       )
                   }>
-                      <ButtonList buttons={buttons} level={1}/>
+                      {
+                          buttons.map((headers, idx) => (
+                              <div className="flex flex-col py-4 w-full h-fit gap-2 border-b-[1px]">
+                                  <span className="text-sm font-semibold">{headers.title}</span>
+                                  <ButtonList buttons={headers.buttons} level={1}/>
+                              </div>
+                          ))
+                      }
                   </div>
                   {
                       !isCollapsed && <div

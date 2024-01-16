@@ -1,6 +1,6 @@
 'use client'
 import {usePathname, useRouter} from "next/navigation";
-import {useState} from "react";
+import React, {useState} from "react";
 import classNames from "classnames";
 import NavigationButton from "@/components/dashboard/NavigationButton";
 import {isRole} from "@/lib/table/useAuth"
@@ -28,10 +28,11 @@ const ButtonList = ({ buttons, level = 0, child = false }) => {
             .map((button) => (
             <div key={button.id} className={
                 classNames(
-                    "flex flex-col gap-1",
-                    level !== 1 && `pl-8`
+                    "flex flex-col gap-1 relative",
+                    level !== 1 && `ml-12`
                 )
             }>
+                {expanded && level > 1 && <div className="h-[110%] absolute right-[110%] w-0.5 bg-transparent border-[1px]"/>}
                 <NavigationButton
                     child={child}
                     id={button.id}

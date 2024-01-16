@@ -4,7 +4,7 @@ import React from 'react';
 import ChevronsRight from "@/assets/icons/ChevronsRight";
 
 const NavigationButton = ({
-                              id, onClick, label, icon: Icon, active, level, onExpand, expanded, isChilds, child
+                              id, onClick, label, icon: Icon, active, level, onExpand, expanded, isChilds
                           }) => {
 
     const handleExpand = (event) => {
@@ -24,11 +24,10 @@ const NavigationButton = ({
         }}
         className={classNames("flex items-center h-fit gap-4 rounded-lg py-3 relative px-4 text-sm font-medium", "cursor-pointer group", "transition-all duration-200 ease-in-out", active ? "!bg-muted-foreground" : "bg-muted hover:bg-trans-purple",)}
     >
-        {Icon && <Icon className={classNames(
-            !active ? "stroke-muted-foreground" : "stroke-muted"
-        )}/>}
+        {(level > 1 && !active) && <div className="w-1.5 h-1.5 absolute right-full bg-muted-foreground rounded-full"/>}
+        {Icon && <Icon className={classNames(!active ? "stroke-muted-foreground" : "stroke-muted")}/>}
         {label && label !== "" &&
-            <span className={classNames("text-muted-foreground font-semibold", active && "!text-muted")}>{label}
+            <span className={classNames("text-muted-foreground text-sm font-semibold", active && "!text-muted", level > 1 && "!font-medium !text-xs")}>{label}
 </span>}
 
         {isChilds && !!id && (<div
@@ -37,10 +36,7 @@ const NavigationButton = ({
             onClick={handleExpand}
         >
             <ChevronsRight
-                className={classNames(
-                    "h-4 w-4 shrink-0",
-                    expanded ? "[&_path]:fill-muted-foreground" : "[&_path]:text-muted"
-                )}
+                className={classNames("h-4 w-4 shrink-0", expanded ? "[&_path]:fill-muted-foreground" : "[&_path]:text-muted")}
             />
         </div>)}
     </div>);

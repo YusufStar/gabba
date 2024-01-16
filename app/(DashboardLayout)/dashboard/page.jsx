@@ -1,9 +1,13 @@
+'use client'
+import {useEffect} from "react";
+import {redirect} from 'next/navigation'
+
 export const Page = () => {
-    return <div className="flex items-center justify-center h-full w-full">
-        <span className="text-4xl font-bold">
-        Welcome to the Gabba Dashboard
-        </span>
-    </div>
+    useEffect(() =>  {
+        redirect("/dashboard/Stock")
+    }, [])
+
+    return <></>
 }
 
 export default Page
