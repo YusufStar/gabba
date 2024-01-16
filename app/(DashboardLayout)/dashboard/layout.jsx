@@ -4,12 +4,6 @@ import Sidebar from '@/components/dashboard/Sidebar'
 import React, { useState } from 'react'
 
 const MainLayout = ({ children }) => {
-    const [sideOpen, setSideOpen] = useState(false)
-
-    const changeSideBar = () => {
-        setSideOpen(prev => !prev)
-    }
-
     return (
         <div className="flex h-screen w-full overflow-hidden bg-background pb-4">
             <Sidebar/>

@@ -21,30 +21,36 @@ const buttons = [
                 id: "1.1",
                 label: "Add Company",
                 path: "/dashboard/addcompany",
+                icon: UserIcon,
             },
             {
                 id: "1.2",
                 label: "Add Person",
-                path: "/dashboard/Addperson"
+                path: "/dashboard/Addperson",
+                icon: UserIcon,
             },
             {
                 id: "1.3",
                 label: "Add Suplier",
-                path: "/dashboard/addsuplier"
+                path: "/dashboard/addsuplier",
+                icon: UserIcon,
             },
             {
                 id: "1.4",
                 label: "Stock",
+                icon: UserIcon,
                 childs: [
                     {
                         id: "1.4.1",
                         label: "Stock",
                         path: "/dashboard/Stock",
+                        icon: UserIcon,
                     },
                     {
                         id: "1.4.2",
                         label: "Stock Control",
                         path: "/dashboard/Stockcontrol",
+                        icon: UserIcon,
                     }
                 ]
             }
